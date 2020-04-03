@@ -6,7 +6,7 @@ name: s3 upload
 # events but only for the master branch
 on:
     push:
-        branches: [ release ]
+        branches: [ development ]
     pull_request:
         branches: [ release ]
 
