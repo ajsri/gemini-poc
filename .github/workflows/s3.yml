@@ -21,7 +21,12 @@ jobs:
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
             - uses: actions/checkout@v2
-            - uses: jakejarvis/s3-sync-action@master
+            - name: Set up Node
+              uses: actions/setup-node@v1
+            - name: Build production
+              run: npx ng build
+            - name: Deploy to S3
+              uses: jakejarvis/s3-sync-action@master
               with:
                   args: --acl public-read --follow-symlinks --delete
               env:
